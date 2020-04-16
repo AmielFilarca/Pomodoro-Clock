@@ -20,6 +20,7 @@ const decreaseBreakDurationButton = document.querySelector(
 );
 const breakStartAudio = new Audio("./audio/break-start.mp3");
 const sessionStartAudio = new Audio("./audio/session-start.mp3");
+const timerIndicator = document.querySelector("#timer-indicator");
 // ********** Variables ********** //
 let timerStatus = "stopped";
 let timerInterval = null;
@@ -95,6 +96,7 @@ function startSessionTimer() {
   sessionStartAudio.play();
   timerStatus = "running";
   timerType = "session";
+  timerIndicator.textContent = "Pomodoro";
   // Set the date we're counting down to
   let currentDate = new Date();
   console.log(`Current time: ${currentDate.toLocaleTimeString()}`);
@@ -160,6 +162,7 @@ function startBreakTimer() {
   breakStartAudio.play();
   timerStatus = "running";
   timerType = "break";
+  timerIndicator.textContent = "Break";
   // Set the date we're counting down to
   let currentDate = new Date();
   console.log(`Current time: ${currentDate.toLocaleTimeString()}`);
