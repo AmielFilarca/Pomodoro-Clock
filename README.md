@@ -1,8 +1,6 @@
 # Pomodoro-Clock
 
-The [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) is a time management system where you work for a period of time then take a short break, then work for a period of time then take a short break, and so on.
-
-This pomodoro clock will count down twenty-five minutes of work, indicate it is break time, count down five minutes, then start over again.
+The [pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) is a time management method based on 25-minute stretches of focused work broken by 3-to-5 minute breaks and 15-to-30 minute breaks following the completion of four work periods.
 
 Made to learn/practice JavaScript, HTML, and CSS.
 
