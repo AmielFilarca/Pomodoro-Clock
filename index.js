@@ -1,5 +1,7 @@
 let timerStatus = null;
 let timerInterval = null;
+let sessionDuration = document.querySelector("#session-duration");
+let timerDisplay = document.querySelector("#timer-display");
 
 function isRunning() {
   return timerStatus == "running" ? true : false;
@@ -21,26 +23,20 @@ start.addEventListener("click", () => {
 });
 
 function startTimer() {
+  console.log("Starting timer..");
   timerStatus = "running";
 
   // Set the date we're counting down to
   let currentDate = new Date();
   console.log(`Current time: ${currentDate.toLocaleTimeString()}`);
-  let sessionDuration = document
-    .querySelector("body > div.timer > div:nth-child(3) > div > h1")
-    .textContent.slice(0, 2);
-  console.log(`Session duration: ${sessionDuration}`);
+  let minuteTimer = timerDisplay.textContent.slice(0, 2);
+  console.log(`Session duration: ${minuteTimer}`);
   let endTime = new Date(
-    currentDate.setMinutes(currentDate.getMinutes() + parseInt(sessionDuration))
+    currentDate.setMinutes(currentDate.getMinutes() + parseInt(minuteTimer))
   );
   endTime = new Date(
     endTime.setSeconds(
-      currentDate.getSeconds() +
-        parseInt(
-          document
-            .querySelector("body > div.timer > div:nth-child(3) > div > h1")
-            .textContent.slice(3, 5)
-        )
+      currentDate.getSeconds() + parseInt(timerDisplay.textContent.slice(3, 5))
     )
   );
   console.log(`Timer ends on: ${endTime.toLocaleTimeString()}`);
@@ -79,7 +75,7 @@ function startTimer() {
     // If the timer is finished, write some text
     if (remainingTime < 0) {
       clearInterval(x);
-      document.querySelector(".display > h1").innerHTML = "EXPIRED";
+      timerDisplay.textContent = "EXPIRED";
     }
   }, 1000);
 }
@@ -91,8 +87,11 @@ pause.addEventListener("click", () => {
 
 function pauseTimer() {
   if (isRunning() && !isPaused()) {
+    console.log("Pausing timer..");
     timerStatus = "paused";
     clearInterval(timerInterval);
+  } else if (isPaused()) {
+    console.log("Timer is already paused.");
   }
 }
 
@@ -102,9 +101,13 @@ stop.addEventListener("click", () => {
 });
 
 function stopTimer() {
-  if (isRunning() && !isStopped()) {
+  if (!isStopped()) {
+    console.log("Stopping timer..");
     timerStatus = "stopped";
     clearInterval(timerInterval);
+    timerDisplay.textContent = `${sessionDuration.textContent}:00`;
+  } else if (isStopped()) {
+    console.log("Timer is already stopped.");
   }
 }
 
