@@ -1,4 +1,5 @@
 let timerStatus = null;
+let timerInterval = null;
 
 function isRunning() {
   return timerStatus == "running" ? true : false;
@@ -25,20 +26,32 @@ function startTimer() {
   // Set the date we're counting down to
   let currentDate = new Date();
   console.log(`Current time: ${currentDate.toLocaleTimeString()}`);
-  let sessionDuration = document.querySelector(".session > span").innerHTML;
+  let sessionDuration = document
+    .querySelector("body > div.timer > div:nth-child(3) > div > h1")
+    .textContent.slice(0, 2);
   console.log(`Session duration: ${sessionDuration}`);
-  let countdownDate = new Date(
+  let endTime = new Date(
     currentDate.setMinutes(currentDate.getMinutes() + parseInt(sessionDuration))
   );
-  console.log(`Counting down to: ${countdownDate.toLocaleTimeString()}`);
+  endTime = new Date(
+    endTime.setSeconds(
+      currentDate.getSeconds() +
+        parseInt(
+          document
+            .querySelector("body > div.timer > div:nth-child(3) > div > h1")
+            .textContent.slice(3, 5)
+        )
+    )
+  );
+  console.log(`Timer ends on: ${endTime.toLocaleTimeString()}`);
 
-  // Update the count down every 1 second
-  let x = setInterval(function () {
+  // Update the timer every 1 second
+  timerInterval = setInterval(function () {
     // Get today's date and time
-    let now = new Date().getTime();
+    let currentTime = new Date().getTime();
 
-    // Find the remaining time between now and the count down date
-    let remainingTime = countdownDate - now;
+    // Find the remaining time between now and the timer date
+    let remainingTime = endTime - currentTime;
 
     // Time calculations for days, hours, minutes and seconds
     let days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
@@ -63,7 +76,7 @@ function startTimer() {
       .toString()
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-    // If the count down is finished, write some text
+    // If the timer is finished, write some text
     if (remainingTime < 0) {
       clearInterval(x);
       document.querySelector(".display > h1").innerHTML = "EXPIRED";
@@ -76,7 +89,10 @@ pause.addEventListener("click", () => {
   pauseTimer();
 });
 
-function pauseTimer() {}
+function pauseTimer() {
+  timerStatus = "paused";
+  clearInterval(timerInterval);
+}
 
 const stop = document.querySelector(".stop > button");
 stop.addEventListener("click", () => {
