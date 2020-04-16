@@ -142,7 +142,7 @@ increaseSessionDurationButton.addEventListener("click", () => {
   if (sessionDuration.textContent < 60) {
     sessionDuration.textContent++;
   }
-  if (!isRunning()) {
+  if (isStopped()) {
     timerDisplay.textContent = `${sessionDuration.textContent}:00`;
   }
 });
@@ -150,7 +150,7 @@ decreaseSessionDurationButton.addEventListener("click", () => {
   if (sessionDuration.textContent > 1) {
     sessionDuration.textContent--;
   }
-  if (!isRunning()) {
+  if (isStopped()) {
     timerDisplay.textContent = `${sessionDuration.textContent}:00`;
   }
 });
