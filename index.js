@@ -26,8 +26,18 @@ function startCountdown() {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Display the result in the element with id="demo"
-    document.querySelector(".display > h1").innerHTML = `${minutes}:${seconds}`;
+    console.log(
+      `Time left: ${minutes
+        .toString()
+        .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
+    );
+
+    // Display the result in the element
+    document.querySelector(
+      ".display > h1"
+    ).innerHTML = `${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
     // If the count down is finished, write some text
     if (distance < 0) {
