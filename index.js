@@ -91,6 +91,7 @@ decreaseBreakDurationButton.addEventListener("click", () => {
 // ********** Functions ********** //
 function startSessionTimer() {
   console.log("Starting session timer..");
+  sessionStartAudio.currentTime = 0;
   sessionStartAudio.play();
   timerStatus = "running";
   timerType = "session";
@@ -155,6 +156,7 @@ function startSessionTimer() {
 }
 function startBreakTimer() {
   console.log("Starting break timer..");
+  breakStartAudio.currentTime = 0;
   breakStartAudio.play();
   timerStatus = "running";
   timerType = "break";
