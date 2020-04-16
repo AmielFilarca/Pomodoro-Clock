@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro Clock</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://css.gg/chevron-up.css" rel="stylesheet" />
+    <link href="https://css.gg/chevron-down.css" rel="stylesheet" />
+    <link href="https://css.gg/code.css" rel="stylesheet" />
+    <link href="https://css.gg/heart.css" rel="stylesheet" />
   </head>
   <body>
     <div class="title">
       <h1>Pomodoro Clock</h1>
     </div>
     <div class="settings">
-      <div class="row">
+      <div class="row" id="label-row">
         <div class="text">
           <h3>Session</h3>
         </div>
@@ -19,16 +23,24 @@
           <h3>Break</h3>
         </div>
       </div>
-      <div class="row">
+      <div class="row" id="adjustments-row">
         <div class="session">
-          <button id="decrease-session-duration">-</button>
+          <button id="decrease-session-duration">
+            <i class="gg-chevron-down"></i>
+          </button>
           <span id="session-duration">25</span>
-          <button id="increase-session-duration">+</button>
+          <button id="increase-session-duration">
+            <i class="gg-chevron-up"></i>
+          </button>
         </div>
         <div class="break">
-          <button id="decrease-break-duration">-</button>
+          <button id="decrease-break-duration">
+            <i class="gg-chevron-down"></i>
+          </button>
           <span id="break-duration">5</span>
-          <button id="increase-break-duration">+</button>
+          <button id="increase-break-duration">
+            <i class="gg-chevron-up"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -43,13 +55,32 @@
           <h1 id="timer-display">25:00</h1>
         </div>
       </div>
-      <div class="row">
-        <div class="start"><button id="start-button">Start</button></div>
-        <div class="pause"><button id="pause-button">Pause</button></div>
-        <div class="stop"><button id="stop-button">Stop</button></div>
-        <div class="reset"><button id="reset-button">Reset</button></div>
+      <div class="row" id="buttons-row">
+        <div class="start">
+          <button id="start-button">
+            <img src="icons/play-solid.svg" alt="Start" />
+          </button>
+        </div>
+        <div class="pause">
+          <button id="pause-button">
+            <img src="icons/pause-solid.svg" alt="Pause" />
+          </button>
+        </div>
+        <div class="stop">
+          <button id="stop-button">
+            <img src="icons/stop-solid.svg" alt="Stop" />
+          </button>
+        </div>
+        <div class="reset">
+          <button id="reset-button">
+            <img src="icons/redo-solid.svg" alt="Reset" />
+          </button>
+        </div>
       </div>
     </div>
+    <footer>
+      <i class="gg-code"></i> with <i class="gg-heart"></i> by Amiel
+    </footer>
   </body>
   <script src="index.js"></script>
 </html>
