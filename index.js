@@ -18,8 +18,8 @@ const increaseBreakDurationButton = document.querySelector(
 const decreaseBreakDurationButton = document.querySelector(
   "#decrease-break-duration"
 );
-const breakStartAudio = document.querySelector("#break-start-audio");
-const sessionStartAudio = document.querySelector("#session-start-audio");
+const breakStartAudio = new Audio("./audio/break-start.mp3");
+const sessionStartAudio = new Audio("./audio/session-start.mp3");
 // ********** Variables ********** //
 let timerStatus = "stopped";
 let timerInterval = null;
