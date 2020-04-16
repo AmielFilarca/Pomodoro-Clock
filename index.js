@@ -1,7 +1,8 @@
 let timerStatus = null;
 let timerInterval = null;
-let sessionDuration = document.querySelector("#session-duration");
-let timerDisplay = document.querySelector("#timer-display");
+const sessionDuration = document.querySelector("#session-duration");
+const breakDuration = document.querySelector("#break-duration");
+const timerDisplay = document.querySelector("#timer-display");
 
 function isRunning() {
   return timerStatus == "running" ? true : false;
@@ -117,5 +118,13 @@ reset.addEventListener("click", () => {
 });
 
 function resetTimer() {
+  console.log("Resetting timer..");
+  clearInterval(timerInterval);
   timerStatus = null;
+  sessionDuration.textContent = "25";
+  breakDuration.textContent = "5";
+  timerDisplay.textContent = `${sessionDuration.textContent}:00`;
 }
+
+// * On page load
+timerDisplay.textContent = `${sessionDuration.textContent}:00`;
