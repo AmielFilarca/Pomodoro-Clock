@@ -90,8 +90,10 @@ pause.addEventListener("click", () => {
 });
 
 function pauseTimer() {
-  timerStatus = "paused";
-  clearInterval(timerInterval);
+  if (isRunning() && !isPaused()) {
+    timerStatus = "paused";
+    clearInterval(timerInterval);
+  }
 }
 
 const stop = document.querySelector(".stop > button");
@@ -99,11 +101,18 @@ stop.addEventListener("click", () => {
   stopTimer();
 });
 
-function stopTimer() {}
+function stopTimer() {
+  if (isRunning() && !isStopped()) {
+    timerStatus = "stopped";
+    clearInterval(timerInterval);
+  }
+}
 
 const reset = document.querySelector(".reset > button");
 reset.addEventListener("click", () => {
   resetTimer();
 });
 
-function resetTimer() {}
+function resetTimer() {
+  timerStatus = null;
+}
