@@ -20,15 +20,19 @@
         </div>
       </div>
       <div class="row">
-        <div class="session"><span id="session-duration">1</span></div>
-        <div class="break"><span id="break-duration">1</span></div>
+        <div class="session">
+          <button id="decrease-session-duration">-</button>
+          <span id="session-duration">1</span>
+          <button id="increase-session-duration">+</button>
+        </div>
+        <div class="break">
+          <button id="decrease-break-duration">-</button>
+          <span id="break-duration">1</span>
+          <button id="increase-break-duration">+</button>
+        </div>
       </div>
     </div>
     <div class="timer">
-      <div class="row">
-        <div class="start"><button>Start</button></div>
-        <div class="reset"><button>Reset</button></div>
-      </div>
       <div class="row">
         <div class="text">
           <h2>Session</h2>
@@ -40,8 +44,10 @@
         </div>
       </div>
       <div class="row">
-        <div class="pause"><button>Pause</button></div>
-        <div class="stop"><button>Stop</button></div>
+        <div class="start"><button id="start-button">Start</button></div>
+        <div class="pause"><button id="pause-button">Pause</button></div>
+        <div class="stop"><button id="stop-button">Stop</button></div>
+        <div class="reset"><button id="reset-button">Reset</button></div>
       </div>
     </div>
   </body>
