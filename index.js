@@ -28,7 +28,7 @@ let timerType = "session";
 let sessionDurationValue = 25;
 let breakDurationValue = 5;
 let pomodoroCount = 0;
-let longBreakDuration = 20;
+let longBreakDuration = breakDurationValue * 4;
 // ********** Check Timer Status ********** //
 function isRunning() {
   return timerStatus == "running" ? true : false;
@@ -96,7 +96,8 @@ function startSessionTimer() {
   sessionStartAudio.play();
   timerStatus = "running";
   timerType = "session";
-  timerIndicator.textContent = "Pomodoro";
+  timerIndicator.textContent = `Pomodoro ${pomodoroCount + 1}`;
+  console.log(`Pomodoro count: ${pomodoroCount}`);
   // Set the date we're counting down to
   let currentDate = new Date();
   console.log(`Current time: ${currentDate.toLocaleTimeString()}`);
@@ -141,7 +142,6 @@ function startSessionTimer() {
     if (remainingTime < 0) {
       clearInterval(timerInterval);
       pomodoroCount++;
-      console.log(`Pomodoro count: ${pomodoroCount}`);
       if (Math.floor(pomodoroCount % 4 == 0)) {
         timerDisplay.textContent = `${longBreakDuration
           .toString()
@@ -248,3 +248,4 @@ function resetTimer() {
 timerDisplay.textContent = `${sessionDuration.textContent
   .toString()
   .padStart(2, "0")}:00`;
+timerIndicator.textContent = `Pomodoro ${pomodoroCount + 1}`;

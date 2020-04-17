@@ -118,6 +118,7 @@ button {
 }
 #buttons-row img {
   max-height: 30px;
+  pointer-events: none;
 }
 .gg-chevron-up {
   box-sizing: border-box;
